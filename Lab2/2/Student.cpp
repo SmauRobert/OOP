@@ -12,6 +12,7 @@ char* Student::GetName() {
 }
 
 void Student::SetMathGrade(float newMathGrade) {
+	if(newMathGrade < 0 || newMathGrade > 10) return;
 	this->MathGrade = newMathGrade;
 }
 
@@ -20,6 +21,7 @@ float Student::GetMathGrade() {
 }
 
 void Student::SetEnglishGrade(float newEnglishGrade) {
+	if(newEnglishGrade < 0 || newEnglishGrade > 10) return;
 	this->EnglishGrade = newEnglishGrade;
 }
 
@@ -28,6 +30,7 @@ float Student::GetEnglishGrade() {
 }
 
 void Student::SetHistoryGrade(float newHistoryGrade) {
+	if(newHistoryGrade < 0 || newHistoryGrade > 10) return;
 	this->HistoryGrade = newHistoryGrade;
 }
 
