@@ -76,7 +76,7 @@ char* Math::Add(const char *str1, const char *str2) {
 
     if(t) ans[index --] = t + '0';
     
-    if(ans[0] < '0' || ans[0] > '9') {
+    if(index == 0) {
         for(int i = 0; i < lgans - 1; i ++)
             ans[i] = ans[i + 1];
         ans[lgans - 1] = '\0';
