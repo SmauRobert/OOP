@@ -1,4 +1,5 @@
 #include "Math.h"
+#include <stdarg.h>
 
 int Math::Add(int a, int b) {
     return a + b;
@@ -32,9 +33,18 @@ int Math::Mul(double a, double b, double c) {
     return (int)(a * b * c);
 }
 
-// int Math::Add(int count, ...) {// sums up a list of integers
+int Math::Add(int count, ...) {// sums up a list of integers
+    int ans = 0;
+    va_list Nums;
+    va_start(Nums, count);
+    for(int i = 0; i < count; i ++) {
+        int x = va_arg(Nums, int);
+        ans += x;
+    }
+    va_end(Nums);
 
-// }
+    return ans;
+}
 
 #include <stdio.h>
 
@@ -52,20 +62,24 @@ char* Math::Add(const char *str1, const char *str2) {
     if(lga < lgb) lgans += lgb;
     else lgans += lga;
 
-    char *ans = new char[lgans];
+    char *ans = new char[lgans + 1];
+    ans[lgans] = '\0';
+    
     int t = 0, index = lgans - 1;
     for(int a = lga - 1, b = lgb - 1; a >= 0 || b >= 0; a --, b --) {
-        int sa = (a >= 0 ? str1[a] : 0);
-        int sb = (b >= 0 ? str2[b] : 0);
+        int sa = (a >= 0 ? str1[a] - '0' : 0);
+        int sb = (b >= 0 ? str2[b] - '0' : 0);
 
         ans[index --] = (sa + sb + t) % 10 + '0';
         t = (sa + sb + t) / 10;
     }
 
     if(t) ans[index --] = t + '0';
-    else {
-        for(int i = index; i < lgans; i ++)
-            ans[i - index] = ans[i];
+    
+    if(ans[0] < '0' || ans[0] > '9') {
+        for(int i = 0; i < lgans - 1; i ++)
+            ans[i] = ans[i + 1];
+        ans[lgans - 1] = '\0';
     }
 
     return ans;
