@@ -15,6 +15,8 @@ void Canvas::set_pixel(int y, int x, char ch) {
     screen[y][x] = ch;
 }
 
+#include <stdio.h>
+
 // tuples of x, y, value
 void Canvas::set_pixels(int count, ...) {
     va_list Pixels;

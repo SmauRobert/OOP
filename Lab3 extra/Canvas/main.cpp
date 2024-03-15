@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
     Canvas canvas(10, 50);
+    canvas.clear();
     canvas.set_pixels(4, 4, 25, 124, 3, 33, 124, 2, 24, 95, 4, 3, 95);
     canvas.set_pixels(3, 7, 2, 95, 4, 21, 124, 5, 16, 95);
     canvas.set_pixels(3, 4, 41, 124, 7, 1, 124, 5, 8, 92);
