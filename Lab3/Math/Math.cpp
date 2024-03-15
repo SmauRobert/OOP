@@ -46,8 +46,6 @@ int Math::Add(int count, ...) {// sums up a list of integers
     return ans;
 }
 
-#include <stdio.h>
-
 char* Math::Add(const char *str1, const char *str2) {
     if(str1 == nullptr || str2 == nullptr)
         return nullptr;
